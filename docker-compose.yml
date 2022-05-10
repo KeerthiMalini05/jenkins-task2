@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+        db:
+                image: mysql:8.0.2
+                container_name: db
+                environment:
+                        MYSQL_ROOT_PASSWORD: /run/secrets/mysql_root_password
+                        MYSQL_DATABASE: mydb
+                        MYSQL_USER: keerthi
+                        MYSQL_PASSWORD: /run/secrets/mysql_password
+                ports:
+                        - "3306:3306"
+                volumes:
+                        - dbdata:/var/lib/mysql
+
+        app:
+                depends_on:
+                        - db
+                build: src
+                container_name: myapp
+                ports:
+                        - "5000:80"
+                volumes:
+                        - ./src:/var/www/html/
+secrets:
+        mysql_root_password:
+                external: true
+        mysql_password:
+                external: true
+volumes:
+        dbdata: {}
