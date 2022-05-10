@@ -2,7 +2,7 @@ pipeline {
     agent { label 'keerthi-master-node' }
     stages
     {
-        stage('Composing'){
+        stage('docker compose'){
             steps {
                 checkout scm
                 sh 'docker version'
