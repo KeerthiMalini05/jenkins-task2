@@ -5,10 +5,9 @@ services:
                 image: mysql:8.0.2
                 container_name: db
                 environment:
-                        MYSQL_ROOT_PASSWORD: /run/secrets/mysql_root_password
-                        MYSQL_DATABASE: mydb
-                        MYSQL_USER: keerthi
-                        MYSQL_PASSWORD: /run/secrets/mysql_password
+                        MYSQL_ROOT_PASSWORD: 'root'
+                        MYSQL_USER: 'keerthi'
+                        MYSQL_PASSWORD: 'Keerthi05'
                 ports:
                         - "3306:3306"
                 volumes:
